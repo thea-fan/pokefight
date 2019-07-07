@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Nosifer|Press+Start+2P&display=swap" rel="stylesheet">
+
+    <style>
+        body{
+/*            background-image: url(https://thumbs.gfycat.com/ZigzagImpracticalIriomotecat-size_restricted.gif);
+            background-size: cover;
+            background-blend-mode: hard-light;*/
+        }
+
+        .title{
+            font-family: 'Nosifer', cursive;
+            font-size: 40px
+        }
+
+        .display{
+            justify-content: space-evenly;
+            margin-bottom: 30px;
+        }
+
+        .banner{
+         color: white;
+         font-size: 26px;
+         font-weight: 700;
+         background-color: red;
+         box-sizing: border-box;
+         padding: 15px 5px;
+     }
+
+
+
+     .scoreboard{
+        justify-content: center;
+        margin-top: 50px;
+    }
+
+    .score{
+        border: 1px solid white;
+        text-align: center;
+        padding: 5px 45px;
+        background-color: rgba(255,140,0, 0.9);
+        border-radius: 20px;
+        color: black;
+        box-shadow: 5px 9px #999;
+        height: 150px;
+    }
+
+    #com-score, #user-score{
+
+        font-size: 40px;
+        color: white;
+        font-weight: 700;
+        top: 210px;
+        position: sticky;
+    }
+
+    .centered{
+        text-align: center;
+    }
+
+
+    img{
+        height: 300px;
+        width: 300px;
+        object-fit: contain;
+    }
+
+    #attack{
+            display: block;
+    margin: 0 44%;
+    font-size: 30px;
+    }
+
+    #result{
+        font-family: 'Press Start 2P', cursive;
+        font-size: 28px;
+        margin-top: 50px;
+        text-transform: uppercase;
+    }
+
+    .option{
+        justify-content: space-between;
+        margin-top: 30px;
+    }
+
+    .power{
+        margin: 10px;
+        font-size: -webkit-xxx-large;
+        width: 90px;
+        height: 90px;
+        text-align: center;
+        background-size: cover;
+            border-radius: 50%;
+    box-shadow: 0 9px #999;
+    position: absolute;
+    }
+
+    .power:hover{
+        border: 5px solid black;
+    }
+
+    .power:active{
+         box-shadow: 0 5px #666;
+  transform: translateY(4px);
+  background-position: bottom;
+    }
+
+    #fire{
+        background-image: url('https://image.flaticon.com/icons/svg/426/426833.svg');
+            bottom: 25%;
+    left: 20%;
+    }
+
+    #water{
+        background-image: url('https://image.flaticon.com/icons/svg/947/947089.svg');
+                bottom: 10%;
+    left: 30%;
+    }
+
+    #ground{
+        background-image: url('https://image.flaticon.com/icons/svg/1574/1574993.svg');
+        bottom: 0;
+    left: 45%;
+    }
+
+    #grass{
+        background-image: url('https://image.flaticon.com/icons/svg/785/785136.svg');
+         bottom: 10%;
+    right: 30%;
+    }
+    #rock{
+        background-image: url('https://image.flaticon.com/icons/svg/145/145236.svg');
+        bottom: 25%;
+    right: 20%;
+    }
+
+
+
+</style>
+</head>
+
+<body>
+    <div class = "container">
+
+
+
+
+
+        <div>
+            <h2 class="centered" id="result">Who wins here?</h2>
+        </div>
+
+        <div class = "row centered display">
+            <div class = "score scoreboard">
+                <span class ="banner">Player</span><br>
+                <span id = "user-score">0</span>
+            </div>
+
+            <div class = "monster centered">
+                <img src="https://media.istockphoto.com/photos/halloween-monster-picture-id178640157?k=6&m=178640157&s=612x612&w=0&h=7RAlwdAVYVKM7drj9imrNAqVfeD3yJrFgHHEbJ5MDLU=">
+            </div>
+
+            <div class = "score scoreboard">
+                <span class ="banner">Enemy</span><br>
+                <span id = "com-score">0</span>
+            </div>
+        </div>
+
+
+
+                <button type="button" class="btn btn-outline-danger" id="attack">Attack</button>
+         <h2 class = "centered" id = "user">you<h2>
+                <div class = "option">
+                    <div class = "power" id="fire" value="fire">fire
+                    </div>
+                    <div class = "power" id="water" value="water">water
+                    </div>
+                    <div class = "power" id="ground" value="ground">ground
+                    </div>
+                    <div class = "power" id="grass" value="grass">grass
+                    </div>
+                    <div class = "power" id="rock" value="rock">rock
+                    </div>
+                </div>
+            </div>
+
+        </body>
+        <script src="project1.js"></script>
+        </html>
