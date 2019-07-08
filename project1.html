@@ -2,18 +2,14 @@
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
-    <link href="https://fonts.googleapis.com/css?family=Nosifer|Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
 
     <style>
         body{
-/*            background-image: url(https://thumbs.gfycat.com/ZigzagImpracticalIriomotecat-size_restricted.gif);
+            background-image: url(https://thumbs.gfycat.com/ZigzagImpracticalIriomotecat-size_restricted.gif);
             background-size: cover;
-            background-blend-mode: hard-light;*/
-        }
-
-        .title{
-            font-family: 'Nosifer', cursive;
-            font-size: 40px
+            background-blend-mode: hard-light;
+        font-family: 'Press Start 2P', cursive;
         }
 
         .display{
@@ -23,7 +19,7 @@
 
         .banner{
          color: white;
-         font-size: 26px;
+         font-size: 18px;
          font-weight: 700;
          background-color: red;
          box-sizing: border-box;
@@ -49,8 +45,6 @@
     }
 
     #com-score, #user-score{
-
-        font-size: 40px;
         color: white;
         font-weight: 700;
         top: 210px;
@@ -68,14 +62,17 @@
         object-fit: contain;
     }
 
+    #user{
+        margin-left: 5%;
+    }
+
     #attack{
             display: block;
     margin: 0 44%;
-    font-size: 30px;
+    font-size: 26px;
     }
 
     #result{
-        font-family: 'Press Start 2P', cursive;
         font-size: 28px;
         margin-top: 50px;
         text-transform: uppercase;
@@ -96,6 +93,8 @@
             border-radius: 50%;
     box-shadow: 0 9px #999;
     position: absolute;
+    font-size: 24px;
+    text-transform: uppercase;
     }
 
     .power:hover{
@@ -117,24 +116,24 @@
     #water{
         background-image: url('https://image.flaticon.com/icons/svg/947/947089.svg');
                 bottom: 10%;
-    left: 30%;
+    left: 32%;
     }
 
     #ground{
         background-image: url('https://image.flaticon.com/icons/svg/1574/1574993.svg');
         bottom: 0;
-    left: 45%;
+    left: 48%;
     }
 
     #grass{
         background-image: url('https://image.flaticon.com/icons/svg/785/785136.svg');
          bottom: 10%;
-    right: 30%;
+    right: 29%;
     }
     #rock{
         background-image: url('https://image.flaticon.com/icons/svg/145/145236.svg');
         bottom: 25%;
-    right: 20%;
+    right: 18%;
     }
 
 
@@ -170,9 +169,9 @@
         </div>
 
 
-
+             <p class = "centered" id = "user">Welcome!</p>
                 <button type="button" class="btn btn-outline-danger" id="attack">Attack</button>
-         <h2 class = "centered" id = "user">you<h2>
+
                 <div class = "option">
                     <div class = "power" id="fire" value="fire">fire
                     </div>

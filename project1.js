@@ -6,12 +6,12 @@ var comScore = 0;
 var turn = 0;
 var totalRound = 5;
 var userArr = [];
-var monsterURL = ["https://img.pokemondb.net/artwork/ivysaur.jpg", "https://img.pokemondb.net/artwork/ponyta.jpg","https://img.pokemondb.net/artwork/vaporeon.jpg","https://img.pokemondb.net/artwork/marowak.jpg","https://img.pokemondb.net/artwork/aerodactyl.jpg"]
-var monsterList = ["Ivysaur", "Ponyta", "Vaporeon", "Marowak","Aerodactyl"];
+var monsterURL = ["https://img.pokemondb.net/artwork/ivysaur.jpg", "https://img.pokemondb.net/artwork/ponyta.jpg","https://img.pokemondb.net/artwork/vaporeon.jpg","https://img.pokemondb.net/artwork/marowak.jpg","https://img.pokemondb.net/artwork/golem.jpg"]
+var monsterList = ["Ivysaur", "Ponyta", "Vaporeon", "Marowak","Golem"];
+var monsterType=["grass", "fire", "water", "ground", "rock"];
 var attack_id = document.getElementById("attack");
 var userScore_id = document.getElementById("user-score");
 var comScore_id = document.getElementById("com-score");
-
 var result_id = document.getElementById("result");
 var monster_id = document.getElementById("monster");
 var user_id = document.getElementById("user");
@@ -27,9 +27,9 @@ var rock_id = document.getElementById("rock");
 var monster= function(){
     var monsterIndex = Math.floor(Math.random()*monsterList.length);
     result_id.textContent = "It is a "+monsterList[monsterIndex]+"!";
-    currentMonster=monsterList[monsterIndex];
+    currentMonster=monsterType[monsterIndex];
 
-    console.log("The enemy is: "+currentMonster)
+    console.log("The enemy is: "+currentMonster);
     document.querySelector("img").setAttribute("src", monsterURL[monsterIndex]);
 
 }
@@ -69,47 +69,41 @@ var play = function (x){
     user_id.textContent="You use "+x;
     console.log("User chose "+x);
 
+    if (x===currentMonster){
+        console.log("NO EFFECT");
+        user_id.textContent="No effect! Same type of pokemon!";
+    } else {
 
     switch (x + currentMonster){
-        case "metalwood":
-        case "woodearth":
         case "waterfire":
-        case "firemetal":
-        case "earthwater":
-        //generating flow
-        case "metalwater":
-        case "woodfire":
-        case "waterwood":
-        case "fireearth":
-        case "earthmetal":
+        case "waterground":
+        case "waterrock":
+        case "grasswater":
+        case "grassrock":
+        case "grassground":
+        case "firegrass":
+        case "groundrock":
+        case "rockfire":
 
             userScore++;
             userScore_id.textContent++;
         break
-        case "woodmetal":
-        case "earthwood":
         case "firewater":
-        case "metalfire":
-        case "waterearth":
-        //generating flow
-        case "watermetal":
-        case "firewood":
-        case "woodwater":
-        case "earthfire":
-        case "metalearth":
+        case "groundwater":
+        case "rockwater":
+        case "watergrass":
+        case "rockgrass":
+        case "groundgrass":
+        case "grassfire":
+        case "rockground":
+        case "firerock":
 
             comScore++;
             comScore_id.textContent++;
         break
-        case "woodwood":
-        case "earthearth":
-        case "firefire":
-        case "metalmetal":
-        case "waterwater":
-            console.log("NO EFFECT")
-        break
         default:
-    console.log("ERROR~~~");
+        console.log("ERROR~~~");
+    }
 
     }
 
