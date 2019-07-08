@@ -12,7 +12,6 @@ var monsterList = ["Ivysaur", "Ponyta", "Vaporeon", "Marowak","Golem"];
 var monsterType = ["grass", "fire", "water", "ground", "rock"];
 var typeURL = ["assets/typegrass.png","assets/typefire.png","assets/typewater.png","assets/typeground.png","assets/typerock.png"];
 var enemyHealth = document.getElementById("enemyHealth");
-var userHealth = document.getElementById("userHealth");
 var attack_id = document.getElementById("attack");
 var userScore_id = document.getElementById("user-score");
 var comScore_id = document.getElementById("com-score");
@@ -49,7 +48,7 @@ var comWin = function (){
     result_id.textContent = "Uh oh..the monster has won!"}
 
 var gameDraw = function (){
-    result_id.textContent = "Check code! Game cannot be draw"}
+    result_id.textContent = "It's a draw!"}
 
 var checkWin = function(){
     if (turn < totalRound){
@@ -67,7 +66,7 @@ var checkWin = function(){
 //Game logic****************************
 var play = function (x){
 
-    document.getElementsByTagName("i")[turn].classList.add('is-empty')
+
     turn++;
 
 
@@ -127,17 +126,20 @@ if (x === currentMonster){
 var sendAttack = function(userInput){
 
     var userInput = event.target.id;
-    user_id.textContent="You use "+userInput;
     userArr.push(userInput);
+    user_id.textContent="You use "+userArr;
 
-    console.log(`sendAttack is: `+userInput);
-    attack_id.addEventListener("click", function(){checkCombo(userInput)})
+    console.log(`sendAttack is: `+userArr);
+    attack_id.addEventListener("click", function(){checkCombo(userArr)})
 
 }
 
 
 //Check combo****************************
 var combo1 = function(){
+    var fullHeart = document.querySelector(".full")
+    fullHeart.classList.add('is-empty');
+    fullHeart.classList.remove('full');
     var combo = userArr[0];
     play(combo);
 }
@@ -145,24 +147,40 @@ var combo1 = function(){
 
 //%%%%%%%%%% To code combo2
 var combo2 = function(){
-    console.log(userArr)
+    var fullHeart = document.querySelectorAll(".full")
+    for (var i=0; i<2; i++){
+        fullHeart[i].classList.add('is-empty');
+    };
+    for (var j=0; j<2; j++){
+        fullHeart[j].classList.remove('full');
+    };
+    console.log(userArr);
     var combo = userArr[0]+userArr[1];
     console.log(combo);
-    sendAttack(combo);
+    play(combo);
 }
 
 
 //%%%%%%%%%% To code combo3
-// var combo3 = function(){
-
-
-// }
+var combo3 = function(){
+    var fullHeart = document.querySelectorAll(".full")
+    for (var i=0; i<3; i++){
+        fullHeart[i].classList.add('is-empty');
+    };
+    for (var j=0; j<3; j++){
+        fullHeart[j].classList.remove('full');
+    };
+    console.log(userArr);
+    var combo = userArr[0]+userArr[1]+userArr[2];
+    console.log(combo);
+    play(combo);
+}
 
 
 var checkCombo = function (userInput){
 
-    //console.log(userArr);
 
+    user_id.textContent="";
     switch(userArr.length){
     case 1:
         combo1();
@@ -171,7 +189,7 @@ var checkCombo = function (userInput){
         combo2();
     break
     case 3:
-        console.log("combo3");
+        combo3();
     break
 
 }
@@ -197,7 +215,8 @@ var setUp = function(){
     rock_id.addEventListener("click", sendAttack);
     attack_id.addEventListener("click", alertInput);
 
-    setTimeout(function(){monster(); }, 800);
+    setTimeout(function(){monster(); }, 500);
+
 
 }
 
