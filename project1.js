@@ -6,9 +6,13 @@ var comScore = 0;
 var turn = 0;
 var totalRound = 5;
 var userArr = [];
+var heartIndex = 0;
 var monsterURL = ["https://img.pokemondb.net/artwork/ivysaur.jpg", "https://img.pokemondb.net/artwork/ponyta.jpg","https://img.pokemondb.net/artwork/vaporeon.jpg","https://img.pokemondb.net/artwork/marowak.jpg","https://img.pokemondb.net/artwork/golem.jpg"]
 var monsterList = ["Ivysaur", "Ponyta", "Vaporeon", "Marowak","Golem"];
-var monsterType=["grass", "fire", "water", "ground", "rock"];
+var monsterType = ["grass", "fire", "water", "ground", "rock"];
+var typeURL = ["assets/typegrass.png","assets/typefire.png","assets/typewater.png","assets/typeground.png","assets/typerock.png"];
+var enemyHealth = document.getElementById("enemyHealth");
+var userHealth = document.getElementById("userHealth");
 var attack_id = document.getElementById("attack");
 var userScore_id = document.getElementById("user-score");
 var comScore_id = document.getElementById("com-score");
@@ -25,14 +29,16 @@ var rock_id = document.getElementById("rock");
 
 //Create random monster*******************
 var monster= function(){
+
     var monsterIndex = Math.floor(Math.random()*monsterList.length);
     result_id.textContent = "It is a "+monsterList[monsterIndex]+"!";
-    currentMonster=monsterType[monsterIndex];
+    currentMonster = monsterType[monsterIndex];
 
     console.log("The enemy is: "+currentMonster);
-    document.querySelector("img").setAttribute("src", monsterURL[monsterIndex]);
-
+    document.getElementById("enemy").setAttribute("src", monsterURL[monsterIndex]);
+    document.getElementById("type").setAttribute("src", typeURL[monsterIndex]);
 }
+
 
 
 //Game outcome****************************
@@ -58,54 +64,58 @@ var checkWin = function(){
 }
 
 
-
 //Game logic****************************
 var play = function (x){
+
+    document.getElementsByTagName("i")[turn].classList.add('is-empty')
     turn++;
+
 
     var userInput = event.target.id;
     console.log ('Start of Round '+turn);
-    //console.log(x);
-    user_id.textContent="You use "+x;
+
     console.log("User chose "+x);
 
-    if (x===currentMonster){
-        console.log("NO EFFECT");
-        user_id.textContent="No effect! Same type of pokemon!";
-    } else {
+if (x === currentMonster){
+    user_id.textContent = "No effect! Same type!";
+
+}else {
 
     switch (x + currentMonster){
         case "waterfire":
         case "waterground":
         case "waterrock":
-        case "grasswater":
-        case "grassrock":
-        case "grassground":
         case "firegrass":
         case "groundrock":
+        case "groundfire":
         case "rockfire":
+        case "grassrock":
+        case "grassground":
+        case "grasswater":
 
+            enemyHealth.value -=10;
+            setTimeout(function(){ enemyHealth.value =10; }, 500);
             userScore++;
             userScore_id.textContent++;
         break
         case "firewater":
         case "groundwater":
         case "rockwater":
-        case "watergrass":
-        case "rockgrass":
-        case "groundgrass":
         case "grassfire":
         case "rockground":
+        case "fireground":
         case "firerock":
+        case "rockgrass":
+        case "groundgrass":
+        case "watergrass":
 
             comScore++;
             comScore_id.textContent++;
         break
-        default:
-        console.log("ERROR~~~");
+
+        }
     }
 
-    }
 
     console.log ('End of Round '+turn);
     checkWin();
@@ -116,12 +126,9 @@ var play = function (x){
 //Send user end input: Attack button***********************
 var sendAttack = function(userInput){
 
-
     var userInput = event.target.id;
-
-    //console.log(userArr)
+    user_id.textContent="You use "+userInput;
     userArr.push(userInput);
-    //console.log(userArr);
 
     console.log(`sendAttack is: `+userInput);
     attack_id.addEventListener("click", function(){checkCombo(userInput)})
@@ -131,9 +138,7 @@ var sendAttack = function(userInput){
 
 //Check combo****************************
 var combo1 = function(){
-    //console.log(userArr)
     var combo = userArr[0];
-    //console.log(combo);
     play(combo);
 }
 
@@ -192,7 +197,7 @@ var setUp = function(){
     rock_id.addEventListener("click", sendAttack);
     attack_id.addEventListener("click", alertInput);
 
-    monster();
+    setTimeout(function(){monster(); }, 800);
 
 }
 
