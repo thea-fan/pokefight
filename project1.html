@@ -2,220 +2,61 @@
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link href="https://unpkg.com/nes.css/css/nes.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <link href = "style.css" rel="stylesheet" type="text/css">
 
-    <style>
-
-        body{
-            background-image: url(https://thumbs.gfycat.com/ZigzagImpracticalIriomotecat-size_restricted.gif);
-            background-size: cover;
-            background-blend-mode: hard-light;
-            text-transform: uppercase;
-        }
-
-        .centered{
-            text-align: center;
-        }
-        .display{
-            justify-content: space-evenly;
-
-        }
-
-        .banner{
-           color: white;
-           font-size: 18px;
-           font-weight: 700;
-           background-color: red;
-           box-sizing: border-box;
-           padding: 15px 5px;
-       }
-
-
-
-       .scoreboard{
-        justify-content: center;
-        margin-top: 50px;
-    }
-
-    .score{
-        border: 1px solid white;
-        text-align: center;
-        padding: 5px 45px;
-        background-color: rgba(255,140,0, 0.9);
-        border-radius: 20px;
-        color: black;
-        box-shadow: 5px 9px #999;
-        height: 150px;
-    }
-
-    #com-score, #user-score{
-
-        font-size: 28px;
-        color: white;
-        font-weight: 700;
-        top: 210px;
-        position: sticky;
-    }
-
-    #enemy{
-        height: 300px;
-        width: 300px;
-        object-fit: contain;
-    }
-
-    .health{
-        margin-top: 20px;
-        font-size: 14px;
-        letter-spacing: -1px;
-    }
-
-    .moves{
-        transform: scale(1.4) !important;
-        width: 9px;
-    }
-
-    #attack{
-        display: block;
-        margin: 0 43%;
-        font-size: 28px;
-        margin-top: 20px;
-    }
-
-    #user{
-        font-size: 18px;
-        margin: 20px 18% 0 20%;
-    }
-
-    #result{
-        font-family: 'Press Start 2P', cursive;
-        font-size: 28px;
-        margin-top: 50px;
-        text-align: right;
-    }
-
-    #type{
-        margin-top: 50px;
-        width: 100px;
-        background-size: contain;
-        background-repeat: no-repeat;
-    }
-
-    .option{
-        justify-content: space-between;
-        margin-top: 30px;
-    }
-
-    .power{
-        margin: 10px;
-        font-size: 20px;
-        width: 90px;
-        height: 90px;
-        text-align: center;
-        background-size: cover;
-        border-radius: 50%;
-        box-shadow: 0 9px #999;
-        position: absolute;
-    }
-
-    .power:hover{
-        border: 5px solid black;
-    }
-
-    .power:active{
-       box-shadow: 0 5px #666;
-       transform: translateY(4px);
-       background-position: bottom;
-   }
-
-   #fire{
-    background-image: url('https://image.flaticon.com/icons/svg/426/426833.svg');
-    bottom: 30%;
-    left: 20%;
-}
-
-#water{
-    background-image: url('https://image.flaticon.com/icons/svg/947/947089.svg');
-    bottom: 10%;
-    left: 28%;
-}
-
-#ground{
-    background-image: url('https://image.flaticon.com/icons/svg/1574/1574993.svg');
-    bottom: 0;
-    left: 46%;
-}
-
-#grass{
-    background-image: url('https://image.flaticon.com/icons/svg/785/785136.svg');
-    bottom: 10%;
-    right: 28%;
-}
-#rock{
-    background-image: url('https://image.flaticon.com/icons/svg/145/145236.svg');
-    bottom: 30%;
-    right: 20%;
-}
-
-
-
-</style>
 </head>
 
 <body>
-    <div class = "container">
+    <div class = "container fast">
+        <div class ="centered" id="timer">0:30</div>
         <div class = "row">
-            <h2 class="col-8" id="result">Who wins here?</h2>
+            <h2 class="col-8" id="result">Pokefight!!</h2>
             <img id = "type" src = "assets/blank.png">
 
         </div>
 
-        <div class = "row centered display">
+        <div class = "row centered display faster">
             <div>
-                <div class = "score scoreboard">
+                <div class = "liveBadge">Life:
+                    <i class="lives nes-icon is-small full heart"></i>
+                    <i class="lives nes-icon is-small full heart"></i>
+                    <i class="lives nes-icon is-small full heart"></i>
+                    <i class="lives nes-icon is-small full heart"></i>
+                    <i class="lives nes-icon is-small full heart"></i>
+                </div>
+                <div class = "score playerscoreboard">
+                    <div id="playerWin">+1</div>
                     <span class ="banner">Player</span><br>
                     <span id = "user-score">0</span>
                 </div>
-                <div class = "health">Moves left:
-                    <i class="moves nes-icon is-small full heart"></i>
-                    <i class="moves nes-icon is-small full heart"></i>
-                    <i class="moves nes-icon is-small full heart"></i>
-                    <i class="moves nes-icon is-small full heart"></i>
-                    <i class="moves nes-icon is-small full heart"></i>
-                </div>
+                Health: <progress class ="health" id="userHealth" value="10" max="10"></progress>
             </div>
 
 
             <div class = "monster centered">
-                <img id = "enemy" src="assets/blank.png">
+                <img class = "faster" id = "enemy" src="assets/blank.png">
             </div>
 
             <div>
-                <div class = "score scoreboard">
+                <div class = "score monscoreboard">
+                    <div id="enemyWin">+1</div>
                     <span class ="banner">Enemy</span><br>
                     <span id = "com-score">0</span>
                 </div>
                 Health: <progress class ="health" id="enemyHealth" value="10" max="10"></progress>
             </div>
-
-
         </div>
 
-
-
-
-        <button id = "attack" type="button" class="nes-btn is-error">ATTACK</button>
-         <h2 class = "centered" id = "user">you<h2>
+        <button id = "attack" type="button" class="fast nes-btn is-error">ATTACK</button>
+        <h2 class = "centered" id = "user"><h2>
             <div class = "option">
-                <div class = "power" id="fire" value="fire">fire
-                </div>
-                <div class = "power" id="water" value="water">water
-                </div>
-                <div class = "power" id="ground" value="ground">ground
-                </div>
-                <div class = "power" id="grass" value="grass">grass
-                </div>
-                <div class = "power" id="rock" value="rock">rock
-                </div>
+                <div class = "power" id="fire">fire</div>
+                <div class = "power" id="water">water</div>
+                <div class = "power" id="ground">ground</div>
+                <div class = "power" id="grass">grass</div>
+                <div class = "power" id="rock">rock</div>
             </div>
         </div>
 

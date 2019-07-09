@@ -1,0 +1,200 @@
+body{
+	background-image: url(https://thumbs.gfycat.com/ZigzagImpracticalIriomotecat-size_restricted.gif);
+	background-size: cover;
+	background-blend-mode: hard-light;
+	text-transform: uppercase;
+}
+
+#timer{
+margin: 10px auto 0 auto;
+width: fit-content;
+}
+
+.toHide{
+visibility: hidden;
+}
+
+.centered{
+text-align: center;
+}
+.display{
+justify-content: space-evenly;
+
+}
+
+.banner{
+color: white;
+font-size: 18px;
+font-weight: 700;
+background-color: red;
+box-sizing: border-box;
+padding: 15px 5px;
+}
+
+#playerWin, #enemyWin{
+width: 80px;
+height: 30px;
+background: limegreen;
+text-align: center;
+color: white;
+position: absolute;
+animation: win 0.6s infinite;
+border-radius: 20px;
+}
+
+#playerWin{
+top: 250px;
+left: 380px;
+}
+
+#enemyWin{
+top: 250px;
+right: 250px;
+}
+
+@keyframes win {
+from {top: 250px;}
+to {top: 210px;}
+}
+
+.monscoreboard{
+justify-content: center;
+margin-top: 50px;
+}
+
+
+.playerscoreboard{
+justify-content: center;
+margin-top: 10px;
+}
+
+.score{
+border: 1px solid white;
+text-align: center;
+padding: 5px 45px;
+background-color: rgba(255,140,0, 0.9);
+border-radius: 20px;
+color: black;
+box-shadow: 5px 9px #999;
+height: 150px;
+}
+
+#com-score, #user-score{
+font-size: 28px;
+color: white;
+font-weight: 700;
+top: 210px;
+position: sticky;
+}
+
+#enemy{
+height: 300px;
+width: 300px;
+object-fit: contain;
+transition: 0.2s;
+}
+
+.explode{
+opacity: 0;
+transform: scale(0.1) rotate(270deg);
+}
+
+.liveBadge{
+margin-top: 20px;
+font-size: 14px;
+letter-spacing: -1px;
+}
+
+.lives{
+transform: scale(1.4) !important;
+width: 9px;
+}
+
+.health{
+margin-top: 20px;
+font-size: 14px;
+letter-spacing: -1px;
+}
+
+#attack{
+display: block;
+margin: 0 43%;
+font-size: 28px;
+margin-top: 20px;
+}
+
+#user{
+font-size: 18px;
+margin: 20px 18% 0 20%;
+}
+
+#result{
+font-family: 'Press Start 2P', cursive;
+font-size: 28px;
+margin-top: 20px;
+text-align: right;
+}
+
+#type{
+margin-top: 20px;
+width: 100px;
+background-size: contain;
+background-repeat: no-repeat;
+}
+
+.option{
+justify-content: space-between;
+margin-top: 30px;
+}
+
+.power{
+margin: 10px;
+font-size: 20px;
+width: 90px;
+height: 90px;
+text-align: center;
+background-size: cover;
+border-radius: 50%;
+box-shadow: 0 9px #999;
+position: absolute;
+}
+
+.power:hover{
+border: 5px solid darkred;
+}
+
+.selected{
+border: 5px solid black;
+box-shadow: 0 5px #666;
+transform: translateY(4px);
+}
+
+#fire{
+background-image: url('https://image.flaticon.com/icons/svg/426/426833.svg');
+bottom: 30%;
+left: 20%;
+}
+
+#water{
+background-image: url('https://image.flaticon.com/icons/svg/947/947089.svg');
+bottom: 10%;
+left: 28%;
+}
+
+#ground{
+background-image: url('https://image.flaticon.com/icons/svg/1574/1574993.svg');
+bottom: 0;
+left: 46%;
+}
+
+#grass{
+background-image: url('https://image.flaticon.com/icons/svg/785/785136.svg');
+bottom: 10%;
+right: 28%;
+}
+
+#rock{
+background-image: url('https://image.flaticon.com/icons/svg/145/145236.svg');
+bottom: 30%;
+right: 20%;
+}
