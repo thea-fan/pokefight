@@ -7,9 +7,10 @@ var turn = 0;
 var totalRound = 10;
 var userArr = [];
 var heartIndex = 0;
+var stopTime;
 var timer= document.querySelector('#timer');
-var monsterURL = ["https://img.pokemondb.net/artwork/ivysaur.jpg", "https://img.pokemondb.net/artwork/ponyta.jpg","https://img.pokemondb.net/artwork/vaporeon.jpg","https://img.pokemondb.net/artwork/marowak.jpg","https://img.pokemondb.net/artwork/golem.jpg"]
-var monsterList = ["Ivysaur", "Ponyta", "Vaporeon", "Marowak","Golem"];
+var monsterURL = ["assets/ivysaur.png", "assets/ponyta.png","assets/vaporeon.png","assets/cubone.png","assets/golem.png"]
+var monsterList = ["Ivysaur", "Ponyta", "Vaporeon", "Cubone","Golem"];
 var monsterType = ["grass", "fire", "water", "ground", "rock"];
 var typeURL = ["assets/typegrass.png","assets/typefire.png","assets/typewater.png","assets/typeground.png","assets/typerock.png"];
 var enemyHealth = document.getElementById("enemyHealth");
@@ -34,6 +35,7 @@ var rock_id = document.getElementById("rock");
 var monster= function(){
 
     var monsterIndex = Math.floor(Math.random()*monsterList.length);
+
     result_id.textContent = "It is a "+monsterList[monsterIndex]+"!";
     currentMonster = monsterType[monsterIndex];
 
@@ -79,7 +81,6 @@ var checkWin = function(){
         userScore++;
         userScore_id.textContent++;
         playerWin_id.classList.remove('toHide');
-        monster();
         setTimeout(function(){ enemyHealth.value =10; }, 500);
 
         } else if (userHealth.value <= 0){
@@ -319,7 +320,6 @@ function startTimer(duration, display) {
         //No more time
         if (--time < 0) {
             timer.textContent = "Time ran out!";
-            alert('Sorry try again!')
         }
 
     }, 1000);
